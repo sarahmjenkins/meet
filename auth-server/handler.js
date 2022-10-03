@@ -112,7 +112,7 @@ module.exports.getCalendarEvents = async (event) => {
           resolve(response);
         }
       }
-    ),
+    );
   })
   .then( results => {
     return {
