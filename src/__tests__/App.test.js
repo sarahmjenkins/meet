@@ -66,4 +66,14 @@ describe('<App /> integration', () => {
     expect(AppWrapper.state('events')).toEqual(allEvents);
     AppWrapper.unmount();
   });
+
+  test('App renders number of events that matches state in NumberOfEvents', async () => {
+    const AppWrapper = mount(<App />);
+    const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
+    const testCount = mockData.length;
+    NumberOfEventsWrapper.setState({ numberOfEvents: testCount });
+    const eventsToShow = mockData.slice(0, testCount);
+    expect(AppWrapper.state('events')).toEqual(eventsToShow);
+    AppWrapper.unmount();
+  });
 });
