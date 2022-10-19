@@ -16,13 +16,10 @@ class App extends Component {
   }
 
   updateEvents = (location = this.state.selectedLocation, eventCount) => {
-    console.log(location, eventCount);
-    
     getEvents().then((events) => {
         const locationEvents = (location === 'all')
           ? events
           : events.filter((event) => event.location === location);
-        console.log(locationEvents);
         this.setState({
           events: locationEvents.slice(0, eventCount),
           selectedLocation: location,
