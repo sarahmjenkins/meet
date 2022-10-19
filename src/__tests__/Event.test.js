@@ -34,10 +34,6 @@ describe('<Event /> component', () => {
     expect(EventWrapper.find('.details-container')).toHaveLength(1);
   });
 
-  test('render event details', () => {
-    expect(EventWrapper.find('.event-details')).toHaveLength(1);
-  });
-
   test('render toggle button', () => {
     expect(EventWrapper.find('.toggle-button')).toHaveLength(1);
   });
