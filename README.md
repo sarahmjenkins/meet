@@ -51,16 +51,16 @@ This app is a serverless, progressive web application (PWA) with React using a t
 
 **Scenario One:** An event element is collapsed by default.
 
->**Given** the user selected a city to see the upcoming events  
->**When** the user doesn't select a specific event  
+>**Given** the user opens the app  
+>**When** the user sees a list of upcoming events  
 >**Then** events should be collapsed and not display details
 
 
 **Scenario Two:** User can expand an event to see its details.
 
->**Given** the user selected a city to see the upcoming events  
->**When** the user selects a specific event  
->**Then** the selected event's should expand, and its details should display
+>**Given** the user sees a list of upcoming events  
+>**When** the user clicks on an event's details button  
+>**Then** the selected event should expand, and its details should display
 
 
 **Scenario Three:** User can collapse an event to hide its details.
@@ -73,22 +73,22 @@ This app is a serverless, progressive web application (PWA) with React using a t
 ### Specify number of events
 
 >As a **user**  
->I should be able to **specity the number of events displayed**  
+>I should be able to **specify the number of events displayed**  
 >So that **I can choose how many events appear at once**
 
 
 **Scenario One:** When user hasn't specified a number, 32 is the default number.
 
->**Given** the user has selected a city to see the upcoming events  
->**When** the user doesn't select the number of events to display  
+>**Given** the user opens the app  
+>**When** the user sees a list of upcoming events  
 >**Then** the user should see 32 upcoming events
 
 
 **Scenario Two:** User can change the number of events they want to see.
 
->**Given** the user has selected a city to see the upcoming events  
->**When** the user chooses the number of events to display  
->**Then** the user should see the selected number of upcoming events
+>**Given** the main page is open  
+>**When** the user puts a new number in the textbox  
+>**Then** the user should see that new number of events
 
 
 ### Use the app when offline
