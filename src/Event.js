@@ -21,6 +21,7 @@ class Event extends Component {
       <div className="event">
         <h1 className="title">{event.summary}</h1>
         <h3 className="location">{event.location}</h3>
+        <p><Moment>{startTime}</Moment></p>
         <div className="details-container">
           {this.state.isVisible 
             && <div className="event-details">
