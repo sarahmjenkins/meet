@@ -5,7 +5,7 @@ import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import { extractLocations, getEvents } from './api';
-// import { mockData } from './mock-data';
+import { WarningAlert } from './Alert';
 
 class App extends Component {
   state = {
@@ -13,7 +13,8 @@ class App extends Component {
     events: [],
     numberOfEvents: 32,
     selectedLocation: 'all',
-  }
+    infoText: ''
+  };
 
   updateEvents = (location = this.state.selectedLocation, eventCount) => {
     getEvents().then((events) => {
@@ -26,7 +27,7 @@ class App extends Component {
           numberOfEvents: eventCount
         });
     });
-  }
+  };
 
   componentDidMount() {
     this.mounted = true;
@@ -38,11 +39,21 @@ class App extends Component {
         });
       }
     });
-  }
+
+    if (!navigator.onLine) {
+      this.setState({
+        infoText: 'Please connect to the internet to get an updated event list.'
+      });
+    } else {
+      this.setState({
+        infoText: ''
+      })
+    }    
+  };
 
   componentWillUnmount() {
     this.mounted = false;
-  }
+  };
   
   render() {
     const { locations, events } = this.state;
@@ -51,6 +62,7 @@ class App extends Component {
       <div className="App">
         <CitySearch locations={locations} updateEvents={this.updateEvents} />
         <NumberOfEvents updateEvents={this.updateEvents} />
+        <WarningAlert text={this.state.infoText} />
         <EventList events={events}/>
       </div>
     );
