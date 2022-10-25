@@ -4,7 +4,8 @@ import './nprogress.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
-import { extractLocations, getEvents } from './api';
+import WelcomeScreen from './WelcomeScreen';
+import { extractLocations, getEvents, checkToken, getAccessToken } from './api';
 import { WarningAlert } from './Alert';
 
 class App extends Component {
@@ -13,7 +14,8 @@ class App extends Component {
     events: [],
     numberOfEvents: 32,
     selectedLocation: 'all',
-    infoText: ''
+    infoText: '',
+    showWelcomeScreen: undefined
   };
 
   updateEvents = (location = this.state.selectedLocation, eventCount) => {
@@ -29,16 +31,27 @@ class App extends Component {
     });
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     this.mounted = true;
-    getEvents().then((events) => {
-      if (this.mounted) {
-        this.setState({ 
-          events: events.slice(0,this.state.numberOfEvents),
-          locations: extractLocations(events),
-        });
-      }
+    const accessToken = localStorage.getItem('access_token');
+    const isTokenValid = (await checkToken(accessToken)).error ? false : true;
+    const searchParams = new URLSearchParams(window.location.search);
+    const code = searchParams.get('code');
+    
+    this.setState({ 
+      showWelcomeScreen: !(code || isTokenValid) 
     });
+
+    if ((code || isTokenValid) && this.mounted) {
+      getEvents().then((events) => {
+        if (this.mounted) {
+          this.setState({ 
+            events: events.slice(0, this.state.numberOfEvents),
+            locations: extractLocations(events),
+          });
+        }
+      });
+    }
 
     if (!navigator.onLine) {
       this.setState({
@@ -48,15 +61,17 @@ class App extends Component {
       this.setState({
         infoText: ''
       })
-    }    
-  };
+    }  
+  }
 
   componentWillUnmount() {
     this.mounted = false;
   };
   
   render() {
-    const { locations, events } = this.state;
+    const { locations, events, showWelcomeScreen } = this.state;
+
+    if (showWelcomeScreen === undefined) return <div className="App" />;
 
     return (
       <div className="App">
@@ -64,6 +79,7 @@ class App extends Component {
         <NumberOfEvents updateEvents={this.updateEvents} />
         <WarningAlert text={this.state.infoText} />
         <EventList events={events}/>
+        <WelcomeScreen showWelcomeScreen={showWelcomeScreen} getAccessToken={() => { getAccessToken() }} />
       </div>
     );
   }
