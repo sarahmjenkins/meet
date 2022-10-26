@@ -94,8 +94,8 @@ class App extends Component {
         <WarningAlert text={this.state.infoText} />
         <div className="data-vis-wrapper">
           <EventGenre events={events} />
-          <h4>Events in each city</h4>
           <ResponsiveContainer height={400}>
+            <h4>Events in each city</h4>
             <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
               <CartesianGrid />
               <XAxis type="category" dataKey="city" name="city" />
