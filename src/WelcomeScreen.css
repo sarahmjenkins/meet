@@ -1,17 +1,30 @@
+/* const colors = [
+  "#86E3CE"-teal, 
+  "#D0E6A5"-light green, 
+  "#FFDD94"-orangeish, 
+  "#FA897B"-salmon, 
+  "#CCABD8"-lavender] */
+
 .WelcomeScreen {
   position: fixed;
   width: 100%;
   height: 100%;
   top: 0;
-  background: white;
+  left: 0;
+  background: #192841;
 }
 
-.login-button {
-  color: #494949;
+.content {
+  margin-top: 200px;
+  color: #ffffff;
+}
+
+.button_cont {
+  color: #ffffff;
   text-transform: uppercase;
   text-decoration: none;
-  background: #ffffff;
-  border: 4px solid #494949;
+  background: #192841;
+  border: 4px solid #ffffff;
   display: inline-block;
   transition: all 0.4s ease 0s;
   min-width: 10rem;
@@ -60,11 +73,18 @@
   letter-spacing: 0.2px;
   font-family: "Roboto";
   background-color: #4285f4;
+  margin-right: 0;
+  margin-top: 0;
   width: 80%;
   height: 100%;
   text-align: center;
 }
 
-.privacy-policy {
+.verification-links {
+  margin-top: 100px;
+}
+
+.privacy-policy, .oauth-homepage {
+  color: #ffffff;
   margin: 20px;
 }
