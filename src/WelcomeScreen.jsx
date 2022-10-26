@@ -17,6 +17,9 @@ function WelcomeScreen(props) {
             </button>
           </div>
         </div>
+        <a className="oauth-homepage" href="https://sarahmjenkins.github.io/meet/homepage.html">
+          Google OAuth2 Homepage
+        </a>
         <a className="privacy-policy" href="https://sarahmjenkins.github.io/meet/privacy.html" rel="nofollow noopener">
           Privacy Policy
         </a>
