@@ -1,16 +1,72 @@
 # Meet App
 
-## About this app
+## Project description
 
 This app is a serverless, progressive web application (PWA) with React using a test-driven development (TDD) technique. This app uses the Google Calendar API to fetch upcoming events. 
 
 ## Key features
+
 - Filter events by city
 - Show/hide event details
 - Specify number of events
 - Use the app when offline
 - Add an app shortcut to the home screen
 - View a chart showing the number of upcoming events by city
+
+## Required tools
+
+This project can run locally using Node.js and an npm package. It requires a Google Developer account and access to the Google Calendar API. 
+
+## Running the project
+
+1. Ensure Node.js is installed.
+
+2. Clone project from GitHub using command line:
+  - HTTPS: `$ git clone https://github.com/sarahmjenkins/meet.git`
+  - SSH: `$ git clone git@github.com:sarahmjenkins/meet.git`
+
+3. Create or log in to a Google Developer and create a project in Google Cloud to access the Google Calendar API. Update files in auth-server folder to match your credentials.
+
+4. Install dependencies:
+  `$ npm install`
+
+5. Run locally:
+  `$ npm start`
+
+## Project dependencies
+
+    "@testing-library/jest-dom": "^5.11.10",
+    "@testing-library/react": "^11.2.6",
+    "@testing-library/user-event": "^12.8.3",
+    "atatus-spa": "^4.5.0",
+    "axios": "^0.21.1",
+    "moment": "^2.29.4",
+    "nprogress": "^0.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-moment": "^1.1.2",
+    "react-scripts": "4.0.3",
+    "recharts": "^2.1.16",
+    "web-vitals": "^0.2.4",
+    "workbox-background-sync": "^5.1.4",
+    "workbox-broadcast-update": "^5.1.4",
+    "workbox-cacheable-response": "^5.1.4",
+    "workbox-core": "^5.1.4",
+    "workbox-expiration": "^5.1.4",
+    "workbox-google-analytics": "^5.1.4",
+    "workbox-navigation-preload": "^5.1.4",
+    "workbox-precaching": "^5.1.4",
+    "workbox-range-requests": "^5.1.4",
+    "workbox-routing": "^5.1.4",
+    "workbox-strategies": "^5.1.4",
+    "workbox-streams": "^5.1.4"
+
+## Developer dependencies
+
+    "enzyme": "^3.11.0",
+    "gh-pages": "^3.1.0",
+    "jest-cucumber": "^3.0.1",
+    "puppeteer": "^18.1.0"
 
 ## Scenarios by key feature
 
@@ -124,7 +180,3 @@ This app is a serverless, progressive web application (PWA) with React using a t
 >**Given** the user hasn't selected a single city  
 >**When** the users chooses to view number of events by city  
 >**Then** the user should see a chart displaying number of events per city
-
-## Dependencies
-
-- Create-React-App
